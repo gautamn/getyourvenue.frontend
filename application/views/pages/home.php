@@ -1,24 +1,32 @@
 <div class="MainArea">
       <div class="FeaturedAllied"><h3>Featured Venues</h3>
-      <ul><li><img src="<?php echo CDN_URI?>assets/images/featured-1.jpg" alt="" height="83" width="133"><br>
-Intercontinen Vila</li>
-<li><img src="<?php echo CDN_URI?>assets/images/featured-2.jpg" alt="" height="83" width="133"><br>
-Tivoli Grand Star</li>
-<li><img src="<?php echo CDN_URI?>assets/images/featured-3.jpg" alt="" height="83" width="133"><br>
-7 Star Banquet</li>
-<li><img src="<?php echo CDN_URI?>assets/images/featured-4.jpg" alt="" height="83" width="133"><br>
-Agraneeya Vila</li>
-      </ul></div>
+      <?php 
+      	$this->load->model("venue_model");
+      	$venueM=new Venue_model();
+      	$venues=$venueM->get_featured_venue(4);
+      ?>
+      <?php if(count($venues)>0){?>
+      <ul>
+      	<?php foreach($venues as $venue){?>
+      	<li><img src="<?php echo CDN_URI?>assets/images/featured-1.jpg" alt="<?php echo $venue['image_alt_tag']?>" height="83" width="133"><br><?php echo $venue['name']?></li>
+		<?php }?>
+      </ul>
+      <?php }?>
+      </div>
       <div class="FeaturedAllied"><h3>Allied Services</h3>
-      <ul><li><img src="<?php echo CDN_URI?>assets/images/allied-1.jpg" alt="" height="83" width="133"><br>
-Wedding Planning</li>
-<li><img src="<?php echo CDN_URI?>assets/images/allied-2.jpg" alt="" height="83" width="133"><br>
-Bridal Lehengas</li>
-<li><img src="<?php echo CDN_URI?>assets/images/allied-3.jpg" alt="" height="83" width="133"><br>
-Catering Services</li>
-<li><img src="<?php echo CDN_URI?>assets/images/allied-4.jpg" alt="" height="83" width="133"><br>
-Agraneeya Vila</li>
-      </ul></div>
+      <?php 
+      	$this->load->model("Alliedservices_model");
+      	$alliedServicesM=new Alliedservices_model();
+      	$alliedServices=$alliedServicesM->get_featured_allied_services(4);
+      ?>
+      <?php if(count($alliedServices)>0){?>
+      <ul>
+	      <?php foreach($alliedServices as $alliedService){?>
+	      	<li><img src="<?php echo CDN_URI?>assets/images/allied-1.jpg" alt="" height="83" width="133"><br><?php echo $alliedService['HEADING']?></li>
+	      <?php }?>
+      </ul>
+      <?php }?>
+      </div>
       <h1>Your One Stop Shop For Wedding Venues in Delhi and NCR</h1>
       <div class="ContentBox">
       <p>GetYourVenue.com is a breakthrough organization which aims at 
