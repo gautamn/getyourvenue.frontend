@@ -1,0 +1,9 @@
+SetEnv ENVIRONMENT development
+php_value "short_open_tag" "on" 
+php_value "post_max_size" "300M"
+php_value "upload_max_filesize" "512M" 
+RewriteEngine On 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+php_flag magic_quotes_gpc 0
